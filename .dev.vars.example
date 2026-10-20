@@ -1,0 +1,8 @@
+ENVIRONMENT=development
+APP_ORIGIN=http://localhost:5173
+BETTER_AUTH_URL=http://localhost:5173
+BETTER_AUTH_SECRET=replace-with-a-random-string-at-least-32-characters
+BOOTSTRAP_TOKEN=replace-with-a-random-bootstrap-token
+DEV_MAILBOX=1
+# RESEND_API_KEY=
+# EMAIL_FROM=still <hello@example.com>
