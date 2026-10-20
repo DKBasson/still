@@ -1,0 +1,180 @@
+:root {
+  color-scheme: light;
+  --paper: #f3efe6;
+  --paper-2: #e7e1d4;
+  --ink: #1c1915;
+  --muted: #655e55;
+  --line: #d8d0c3;
+  --rose: #7a332c;
+  --forest: #234237;
+  --focus: #1c1915;
+  --shadow: 0 1px 0 rgb(28 25 21 / 6%);
+  font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; }
+body { margin: 0; }
+img { max-width: 100%; height: auto; }
+button, input, textarea { font: inherit; color: inherit; }
+a { color: inherit; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 0.8rem;
+}
+.skip:focus { top: 1rem; z-index: 5; }
+
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.mast, .footer, .frame {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+.mast {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1.4rem 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.wordmark {
+  font-family: "Newsreader", "Iowan Old Style", Georgia, serif;
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+  font-weight: 500;
+}
+.mast nav, .subnav { display: flex; flex-wrap: wrap; gap: 0.9rem 1.1rem; }
+.mast a, .subnav a, .text-button, .quiet {
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mast a[aria-current="page"] { border-bottom: 1px solid var(--ink); }
+main { flex: 1; }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+}
+
+.column { width: min(42rem, calc(100% - 2rem)); margin: 0 auto; padding-top: 2.2rem; }
+.wide { width: min(960px, calc(100% - 2rem)); margin: 0 auto; padding-top: 2rem; }
+h1, h2, .title {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 4.4rem); margin: 0 0 0.6rem; }
+h2 { font-size: 1.8rem; margin: 0; }
+.lede { font-size: 1.15rem; max-width: 38rem; color: var(--muted); }
+
+.stack { display: grid; gap: 0.9rem; }
+label { display: grid; gap: 0.35rem; font-size: 0.92rem; }
+input, textarea, select {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.7rem 0;
+}
+textarea { min-height: 6rem; resize: vertical; border: 1px solid var(--line); padding: 0.7rem; background: rgb(255 255 255 / 35%); }
+input:focus, textarea:focus, select:focus, button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+button, .button {
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+button.secondary, a.secondary {
+  background: transparent;
+  color: var(--ink);
+}
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+.row { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
+.error { color: var(--rose); }
+.note { color: var(--muted); }
+
+.feed { display: grid; gap: 4.5rem; padding-bottom: 2rem; }
+.post { display: grid; gap: 0.9rem; }
+.figure { margin: 0; background: var(--paper-2); }
+.figure img { display: block; width: 100%; height: auto; }
+.post-head, .post-meta { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.who { display: flex; gap: 0.7rem; align-items: center; text-decoration: none; }
+.avatar, .avatar-fallback {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--paper-2);
+  display: grid;
+  place-items: center;
+  font-family: "Newsreader", serif;
+}
+.title { font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0.2rem 0; }
+.description { margin: 0; font-size: 1.05rem; }
+.like[aria-pressed="true"] { background: var(--rose); border-color: var(--rose); }
+.menu { position: relative; }
+.menu summary { list-style: none; cursor: pointer; color: var(--muted); }
+.menu summary::-webkit-details-marker { display: none; }
+.menu-panel {
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  min-width: 12rem;
+  display: grid;
+}
+.menu-panel button, .menu-panel a { background: transparent; color: var(--ink); border: 0; text-align: left; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.6rem; }
+.grid a { display: block; background: var(--paper-2); aspect-ratio: 1; overflow: hidden; }
+.grid img { width: 100%; height: 100%; object-fit: cover; }
+
+.table-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.75rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stat { background: var(--paper); padding: 1rem; }
+.stat b { display: block; font-family: "Newsreader", serif; font-size: 1.8rem; font-weight: 500; }
+.dialog {
+  width: min(32rem, calc(100% - 2rem));
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 1.2rem;
+}
+.dialog::backdrop { background: rgb(28 25 21 / 35%); }
+.status-page { min-height: 70vh; display: grid; align-content: center; }
+
+@media (max-width: 720px) {
+  .mast { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+  .mast nav { gap: 0.45rem 0.7rem; }
+  .mast a, .subnav a { letter-spacing: 0.06em; font-size: 0.72rem; }
+  .feed { gap: 3rem; }
+}
